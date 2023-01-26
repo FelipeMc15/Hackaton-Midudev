@@ -1,8 +1,4 @@
-import {
-  createGetInitialProps,
-  createStylesServer,
-  ServerStyles,
-} from "@mantine/next";
+import { createStylesServer, ServerStyles } from "@mantine/next";
 import Document, {
   Head,
   Html,
@@ -10,8 +6,6 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
-
-const getInitialProps = createGetInitialProps();
 // optional: you can provide your cache as a first argument in createStylesServer function
 const stylesServer = createStylesServer();
 export default class _Document extends Document {
