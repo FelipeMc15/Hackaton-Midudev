@@ -61,4 +61,37 @@ export default createStyles((theme) => ({
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
   },
+
+  description: {
+    maxWidth: 600,
+    margin: "auto",
+
+    "&::after": {
+      content: '""',
+      display: "block",
+      backgroundColor: theme.fn.primaryColor(),
+      width: 45,
+      height: 2,
+      marginTop: theme.spacing.sm,
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  },
+
+  card: {
+    border: `1px solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
+    }`,
+  },
+
+  cardTitle: {
+    "&::after": {
+      content: '""',
+      display: "block",
+      backgroundColor: theme.fn.primaryColor(),
+      width: 45,
+      height: 2,
+      marginTop: theme.spacing.sm,
+    },
+  },
 }));

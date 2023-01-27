@@ -1,5 +1,5 @@
 import Head from "next/head";
-import useStyles from "@/components/Generator/Banner.styles";
+import useStyles from "@/components/Generator/Generator.styles";
 import { Text, Title, TextInput, Button } from "@mantine/core";
 import useGenerateIA from "@/lib/hook/useGenerateIA";
 
