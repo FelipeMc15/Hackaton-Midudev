@@ -21,6 +21,9 @@ interface useGenerateIAResponse {
   loading: boolean;
   error: Error | null;
 }
+// TO DO:
+// Add custom prompt with any text
+// Add text formatter
 export default function useGenerateIA({
   text = "lose weight",
 }: useGenerateIAProps): useGenerateIAResponse {

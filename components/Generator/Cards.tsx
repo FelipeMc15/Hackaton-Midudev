@@ -17,6 +17,10 @@ import {
   IconSwitch2,
 } from "@tabler/icons-react";
 
+// TO DO:
+// add Hover effect in the cards
+// update diets description
+// change the title xd
 export default function Cards({
   onClick,
 }: {
@@ -84,7 +88,7 @@ export default function Cards({
     <Container size="lg" py="xl">
       <Group position="center">
         <Badge variant="filled" size="lg">
-          Best company ever
+          COHERE IA
         </Badge>
       </Group>
 
