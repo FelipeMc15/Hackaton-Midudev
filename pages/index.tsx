@@ -5,6 +5,11 @@ import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// TO DO:
+// add Landing page xd
+// Update Readme :v
+// add navbar (as Miro)
+// change Head tags
 export default function Home() {
   return (
     <>
