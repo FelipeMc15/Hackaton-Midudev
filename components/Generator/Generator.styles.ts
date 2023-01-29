@@ -26,8 +26,6 @@ export default createStyles((theme) => ({
   },
 
   body: {
-    paddingRight: theme.spacing.xl * 4,
-
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       paddingRight: 0,
       marginTop: theme.spacing.xl,

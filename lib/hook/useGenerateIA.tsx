@@ -13,7 +13,17 @@ export interface IDataIA {
     }
   ];
 }
-export default function useGenerateIA() {
+interface useGenerateIAProps {
+  text?: string | undefined;
+}
+interface useGenerateIAResponse {
+  data: IDataIA[];
+  loading: boolean;
+  error: Error | null;
+}
+export default function useGenerateIA({
+  text = "lose weight",
+}: useGenerateIAProps): useGenerateIAResponse {
   const [data, setData] = useState<IDataIA[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -21,12 +31,10 @@ export default function useGenerateIA() {
     const response = async () => {
       setLoading(true);
       try {
-        console.log(COHERE_API);
         cohere.init(COHERE_API); // This is your trial API key
         const res = await cohere.generate({
           model: "command-xlarge-nightly",
-          prompt:
-            "give me recipes for a breakfast to lose weight, with their respective preparation and ingredients",
+          prompt: `give me recipes for a breakfast to ${text}, with their respective preparation and ingredients`,
           max_tokens: 386,
           temperature: 0.9,
           k: 0,
@@ -47,7 +55,7 @@ export default function useGenerateIA() {
       }
     };
     response();
-  }, []);
+  }, [text]);
 
   return { data, loading, error };
 }

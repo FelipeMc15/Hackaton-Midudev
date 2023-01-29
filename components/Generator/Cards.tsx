@@ -8,28 +8,58 @@ import {
   Badge,
   SimpleGrid,
 } from "@mantine/core";
-import { IconGauge, IconUser, IconCookie } from "@tabler/icons-react";
+import {
+  IconFlame,
+  IconBolt,
+  IconEgg,
+  IconGrowth,
+  IconLeaf,
+  IconSwitch2,
+} from "@tabler/icons-react";
 
-export default function Cards() {
+export default function Cards({
+  onClick,
+}: {
+  // eslint-disable-next-line no-unused-vars
+  onClick: (text: string) => void;
+}) {
   const { classes } = useStyles();
   const mockdata = [
     {
-      title: "Extreme performance",
+      title: "Low-carb diet",
       description:
         "This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit",
-      icon: IconGauge,
+      icon: IconFlame,
     },
     {
-      title: "Privacy focused",
+      title: "Intermittent fasting diet",
       description:
         "People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma",
-      icon: IconUser,
+      icon: IconSwitch2,
     },
     {
-      title: "No third parties",
+      title: "Mediterranean diet",
       description:
         "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
-      icon: IconCookie,
+      icon: IconEgg,
+    },
+    {
+      title: "Vegan diet",
+      description:
+        "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      icon: IconLeaf,
+    },
+    {
+      title: "DASH diet",
+      description:
+        "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      icon: IconBolt,
+    },
+    {
+      title: "Ketogenic diet",
+      description:
+        "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      icon: IconGrowth,
     },
   ];
   const features = mockdata.map((feature) => (
@@ -39,9 +69,9 @@ export default function Cards() {
       radius="md"
       className={classes.card}
       p="xl"
+      onClick={() => onClick(feature.title)}
     >
       <feature.icon />
-      <IconCookie />
       <Text size="lg" weight={500} className={classes.cardTitle} mt="md">
         {feature.title}
       </Text>
