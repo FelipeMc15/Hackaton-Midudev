@@ -1,5 +1,6 @@
 import useStyles from "@/components/Generator/Generator.styles";
 import { Text, Title, Card, Container, SimpleGrid } from "@mantine/core";
+import { useDietStore } from "../../lib/store/index";
 import {
   IconFlame,
   IconBolt,
@@ -14,7 +15,8 @@ import {
 // update diets description
 // change the title xd
 export default function TypeDiets() {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
+  const [diet, setDiet] = useDietStore((state) => [state.type, state.setType]);
   const mockdata = [
     {
       title: "Low-carb diet",
@@ -60,7 +62,21 @@ export default function TypeDiets() {
       radius="md"
       className={classes.card}
       p="xl"
-      // onClick={() => onClick(feature.title)}
+      sx={{
+        border:
+          diet === feature.title
+            ? `3px solid ${
+                theme.colorScheme === "dark"
+                  ? theme.colors.blue[5]
+                  : theme.colors.blue[1]
+              }`
+            : `1px solid ${
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[5]
+                  : theme.colors.gray[1]
+              }`,
+      }}
+      onClick={() => setDiet(feature.title)}
     >
       <feature.icon />
       <Text size="lg" weight={500} className={classes.cardTitle} mt="md">
