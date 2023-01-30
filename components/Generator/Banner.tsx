@@ -3,10 +3,10 @@ import useStyles from "@/components/Generator/Generator.styles";
 import { Skeleton, Stack, Text, Title } from "@mantine/core";
 import useGenerateIA from "@/lib/hook/useGenerateIA";
 import { useState } from "react";
-import Cards from "./Cards";
+import TypeDiets from "./TypesDiets";
 
 export default function Banner() {
-  const [text, setText] = useState("lose weight");
+  const [text] = useState("lose weight");
   const { classes } = useStyles();
   const { data, loading } = useGenerateIA({ text });
   console.log(loading);
@@ -37,7 +37,7 @@ export default function Banner() {
           )}
         </div>
       </main>
-      <Cards onClick={setText} />
+      <TypeDiets />
     </>
   );
 }
