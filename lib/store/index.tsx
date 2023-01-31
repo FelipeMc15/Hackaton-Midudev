@@ -17,6 +17,6 @@ export const useDietStore = create<DietState>()((set) => ({
   food: "",
   type: "",
   setDiet: (diet) => set(() => ({ diet })),
-  setFood: (food) => set(() => ({ food })),
-  setType: (type) => set(() => ({ type })),
+  setFood: (food) => set(() => ({ food, diet: "" })),
+  setType: (type) => set(() => ({ type, diet: "" })),
 }));
