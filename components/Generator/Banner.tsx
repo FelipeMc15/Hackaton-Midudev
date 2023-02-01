@@ -2,14 +2,14 @@ import Head from "next/head";
 import useStyles from "@/components/Generator/Generator.styles";
 import { Skeleton, Stack, Text, Title } from "@mantine/core";
 import useGenerateIA from "@/lib/hook/useGenerateIA";
-import { useState } from "react";
-import Cards from "./Cards";
+// import { useState } from "react";
+import TypeDiets from "./TypesDiets";
 
 export default function Banner() {
-  const [text, setText] = useState("lose weight");
+  //const [text] = useState("lose weight");
   const { classes } = useStyles();
-  const { data, loading } = useGenerateIA({ text });
-  console.log(loading);
+  const { data, loading } = useGenerateIA();
+  console.log(loading, data);
   return (
     <>
       <Head>
@@ -31,13 +31,13 @@ export default function Banner() {
             <>
               <Title className={classes.title}>IA Response!</Title>
               <Text size="sm" color="dimmed">
-                {data[0]?.text ?? "NO data"}
+                NO data
               </Text>
             </>
           )}
         </div>
       </main>
-      <Cards onClick={setText} />
+      <TypeDiets />
     </>
   );
 }

@@ -80,6 +80,15 @@ export default createStyles((theme) => ({
     border: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
     }`,
+    transition: "box-shadow 150ms ease, transform 100ms ease",
+    "&:hover": {
+      boxShadow: `${theme.shadows.md} !important`,
+      border: `3px solid ${
+        theme.colorScheme === "dark"
+          ? theme.colors.blue[5]
+          : theme.colors.blue[1]
+      }`,
+    },
   },
 
   cardTitle: {

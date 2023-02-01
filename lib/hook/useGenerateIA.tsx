@@ -1,6 +1,7 @@
 import cohere from "cohere-ai";
 import { useEffect, useState } from "react";
 import { COHERE_API } from "../constants";
+import { useDietStore } from "../store";
 
 // const cohere = require("cohere-ai");
 export interface IDataIA {
@@ -13,9 +14,9 @@ export interface IDataIA {
     }
   ];
 }
-interface useGenerateIAProps {
+/* interface useGenerateIAProps {
   text?: string | undefined;
-}
+} */
 interface useGenerateIAResponse {
   data: IDataIA[];
   loading: boolean;
@@ -24,12 +25,16 @@ interface useGenerateIAResponse {
 // TO DO:
 // Add custom prompt with any text
 // Add text formatter
-export default function useGenerateIA({
-  text = "lose weight",
-}: useGenerateIAProps): useGenerateIAResponse {
+export default function useGenerateIA(): useGenerateIAResponse {
   const [data, setData] = useState<IDataIA[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const [diet, type, food, setDiet] = useDietStore((state) => [
+    state.diet,
+    state.type,
+    state.food,
+    state.setDiet,
+  ]);
   useEffect(() => {
     const response = async () => {
       setLoading(true);
@@ -37,7 +42,7 @@ export default function useGenerateIA({
         cohere.init(COHERE_API); // This is your trial API key
         const res = await cohere.generate({
           model: "command-xlarge-nightly",
-          prompt: `give me recipes for a breakfast to ${text}, with their respective preparation and ingredients`,
+          prompt: `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
           max_tokens: 386,
           temperature: 0.9,
           k: 0,
@@ -48,6 +53,10 @@ export default function useGenerateIA({
           return_likelihoods: "NONE",
         });
         setData(res?.body?.generations ? res.body.generations : []);
+        if (res?.body?.generations[0]?.text) {
+          setDiet(res.body.generations[0].text);
+          console.log(diet);
+        }
         setLoading(false);
       } catch (err: unknown) {
         setLoading(false);
@@ -57,8 +66,10 @@ export default function useGenerateIA({
         }
       }
     };
-    response();
-  }, [text]);
+    if (type.length > 0 && food.length > 0 && diet.length === 0) {
+      response();
+    }
+  }, [type, food, diet, setDiet]);
 
   return { data, loading, error };
 }
