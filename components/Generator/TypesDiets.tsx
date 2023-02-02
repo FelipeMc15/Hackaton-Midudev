@@ -1,5 +1,5 @@
 import useStyles from "@/components/Generator/Generator.styles";
-import { Text, Title, Card, Container, SimpleGrid } from "@mantine/core";
+import { Text, Title, Card, SimpleGrid, Button, Grid } from "@mantine/core";
 import { useDietStore } from "../../lib/store/index";
 import {
   IconFlame,
@@ -88,7 +88,7 @@ export default function TypeDiets() {
     </Card>
   ));
   return (
-    <Container size="lg" py="xl">
+    <>
       <Title order={2} className={classes.title} align="center" mt="sm">
         Select Type Diet
       </Title>
@@ -101,6 +101,18 @@ export default function TypeDiets() {
       >
         {features}
       </SimpleGrid>
-    </Container>
+      <Grid>
+        <Grid.Col span={3}>
+          <Button variant="gradient" gradient={{ from: "indigo", to: "cyan" }}>
+            Indigo cyan
+          </Button>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Button variant="gradient" gradient={{ from: "indigo", to: "cyan" }}>
+            NEXT
+          </Button>
+        </Grid.Col>
+      </Grid>
+    </>
   );
 }
