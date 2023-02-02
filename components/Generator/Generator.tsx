@@ -59,7 +59,11 @@ export default function Generator() {
       </Tabs>
       <div>
         {section !== "type" && (
-          <Button onClick={handleClickPrevious} sx={{ marginLeft: "16px" }}>
+          <Button
+            onClick={handleClickPrevious}
+            sx={{ marginLeft: "16px" }}
+            variant="outline"
+          >
             Previous
           </Button>
         )}{" "}
