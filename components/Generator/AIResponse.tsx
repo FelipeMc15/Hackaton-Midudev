@@ -2,6 +2,7 @@ import useStyles from "@/components/Generator/Generator.styles";
 import useGenerateIA from "@/lib/hook/useGenerateIA";
 import { useDietStore } from "@/lib/store";
 import { Text, Title, Card, Container } from "@mantine/core";
+import Loader from "../Loader";
 
 export default function IAResponse() {
   const { classes } = useStyles();
@@ -15,9 +16,11 @@ export default function IAResponse() {
       </Title>
       <Card shadow="md" radius="md" p="xl">
         <Text size="sm" color="dimmed">
-          {diet.length
-            ? diet.split("\n\n").map((str) => <p key={str}>{str}</p>)
-            : "NO DATA"}
+          {diet.length && !loading ? (
+            diet.split("\n\n").map((str) => <p key={str}>{str}</p>)
+          ) : (
+            <Loader />
+          )}
         </Text>
       </Card>
     </Container>
