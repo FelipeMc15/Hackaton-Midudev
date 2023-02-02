@@ -1,5 +1,5 @@
 import useStyles from "@/components/Generator/Generator.styles";
-import { Text, Title, Card, Container, SimpleGrid } from "@mantine/core";
+import { Text, Title, Card, SimpleGrid, Container } from "@mantine/core";
 import { useDietStore } from "../../lib/store/index";
 import {
   IconFlame,
@@ -88,7 +88,7 @@ export default function TypeDiets() {
     </Card>
   ));
   return (
-    <Container size="lg" py="xl">
+    <Container size="lg" py="xl" p={0}>
       <Title order={2} className={classes.title} align="center" mt="sm">
         Select Type Diet
       </Title>

@@ -63,9 +63,9 @@ export default function FoodsList() {
     </Card>
   ));
   return (
-    <Container size="lg" py="xl">
+    <Container size="lg" py="xl" p={0}>
       <Title order={2} className={classes.title} align="center" mt="sm">
-        Select Type Diet
+        Select Type Food
       </Title>
       <SimpleGrid
         cols={3}
