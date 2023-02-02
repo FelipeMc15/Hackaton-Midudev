@@ -1,6 +1,6 @@
 // import useStyles from "@/components/Generator/Generator.styles";
 import { useState } from "react";
-import { Container, SegmentedControl, Tabs, Button } from "@mantine/core";
+import { Container, SegmentedControl, Tabs, Button, Grid } from "@mantine/core";
 import { useDietStore } from "@/lib/store";
 import TypeDiets from "./TypesDiets";
 import FoodsList from "./FoodsList";
@@ -57,26 +57,31 @@ export default function Generator() {
           <IAResponse />
         </Tabs.Panel>
       </Tabs>
-      <div>
-        {section !== "type" && (
-          <Button
-            onClick={handleClickPrevious}
-            sx={{ marginLeft: "16px" }}
-            variant="outline"
-          >
-            Previous
-          </Button>
-        )}{" "}
-        {section !== "diet" && (
-          <Button
-            sx={{ float: "right", marginRight: "16px" }}
-            onClick={handleClickNext}
-            disabled={data[section] === null || data[section].length === 0}
-          >
-            Next
-          </Button>
-        )}
-      </div>
+      <Grid justify="space-between">
+        <Grid.Col span={6}>
+          {section !== "type" && (
+            <Button onClick={handleClickPrevious} variant="outline">
+              Previous
+            </Button>
+          )}
+        </Grid.Col>
+        <Grid.Col
+          span={6}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          {section !== "diet" && (
+            <Button
+              onClick={handleClickNext}
+              disabled={data[section] === null || data[section].length === 0}
+            >
+              Next
+            </Button>
+          )}
+        </Grid.Col>
+      </Grid>
     </Container>
   );
 }

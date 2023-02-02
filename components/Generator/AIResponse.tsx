@@ -10,11 +10,11 @@ export default function IAResponse() {
   const { data, loading } = useGenerateIA();
   console.log(data, loading);
   return (
-    <Container size="lg" py="xl">
+    <Container size="lg" py="xl" p={0}>
       <Title order={2} className={classes.title} align="center" mt="sm">
         IA Response
       </Title>
-      <Card shadow="md" radius="md" p="xl">
+      <Card shadow="md" radius="md" p="xl" mt={50}>
         <Text size="sm" color="dimmed">
           {diet.length && !loading ? (
             diet.split("\n\n").map((str) => <p key={str}>{str}</p>)
