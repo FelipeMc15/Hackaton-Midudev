@@ -60,46 +60,38 @@ function StyledTabs(props: TabsProps) {
 
 export default function NavBar() {
   const router = useRouter();
-  console.log(router.pathname);
   return (
-    <>
-      <div
-        style={{
-          height: "100px",
-        }}
-      ></div>
-      <Stack
-        align="center"
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
-          position: "sticky",
-          bottom: 0,
-          left: 0,
-          width: "-webkit-fill-available",
-          padding: theme.spacing.md,
-          borderTop: `1px solid ${theme.colors.dark[4]}`,
-        })}
+    <Stack
+      align="center"
+      sx={(theme) => ({
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.gray[0],
+        position: "sticky",
+        bottom: 0,
+        left: 0,
+        width: "-webkit-fill-available",
+        padding: theme.spacing.md,
+        borderTop: `1px solid ${theme.colors.dark[4]}`,
+      })}
+    >
+      <StyledTabs
+        value={router.pathname as string}
+        onTabChange={(value) => router.push(value ?? "")}
       >
-        <StyledTabs
-          value={router.pathname as string}
-          onTabChange={(value) => router.push(value ?? "")}
-        >
-          <Tabs.List>
-            <Tabs.Tab value="/ia" icon={<IconDashboard size={26} />}>
-              Home
-            </Tabs.Tab>
-            <Tabs.Tab value="/history" icon={<IconHistory size={26} />}>
-              History
-            </Tabs.Tab>
-            <Tabs.Tab value="/settings" icon={<IconSettings size={26} />}>
-              Settings
-            </Tabs.Tab>
-          </Tabs.List>
-        </StyledTabs>
-      </Stack>
-    </>
+        <Tabs.List>
+          <Tabs.Tab value="/ia" icon={<IconDashboard size={26} />}>
+            Home
+          </Tabs.Tab>
+          <Tabs.Tab value="/history" icon={<IconHistory size={26} />}>
+            History
+          </Tabs.Tab>
+          <Tabs.Tab value="/settings" icon={<IconSettings size={26} />}>
+            Settings
+          </Tabs.Tab>
+        </Tabs.List>
+      </StyledTabs>
+    </Stack>
   );
 }
