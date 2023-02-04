@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-styled-jsx-in-document */
 import { createStylesServer, ServerStyles } from "@mantine/next";
 import Document, {
   Head,
@@ -34,6 +35,13 @@ export default class _Document extends Document {
         <body>
           <Main />
           <NextScript />
+          <style jsx global>{`
+            /* Other global styles such as 'html, body' etc... */
+
+            #__next {
+              height: 100%;
+            }
+          `}</style>
         </body>
       </Html>
     );

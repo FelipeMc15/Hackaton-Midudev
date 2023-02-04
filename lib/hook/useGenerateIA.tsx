@@ -42,6 +42,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
         cohere.init(COHERE_API); // This is your trial API key
         const res = await cohere.generate({
           model: "command-xlarge-nightly",
+          // give me recipes for a breakfast to Low-carb diet that do not include eggs, with their respective preparation and ingredients
           prompt: `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
           max_tokens: 386,
           temperature: 0.9,

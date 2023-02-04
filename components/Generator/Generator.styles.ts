@@ -1,3 +1,4 @@
+import globalStyles from "@/styles/Global.styles";
 import { createStyles } from "@mantine/core";
 export default createStyles((theme) => ({
   wrapper: {
@@ -30,13 +31,6 @@ export default createStyles((theme) => ({
       paddingRight: 0,
       marginTop: theme.spacing.xl,
     },
-  },
-
-  title: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    lineHeight: 1,
-    marginBottom: theme.spacing.md,
   },
 
   controls: {
@@ -90,15 +84,6 @@ export default createStyles((theme) => ({
       }`,
     },
   },
-
-  cardTitle: {
-    "&::after": {
-      content: '""',
-      display: "block",
-      backgroundColor: theme.fn.primaryColor(),
-      width: 45,
-      height: 2,
-      marginTop: theme.spacing.sm,
-    },
-  },
+  cardTitle: globalStyles.cardTitle(theme),
+  title: globalStyles.title(theme),
 }));
