@@ -11,12 +11,14 @@ import {
 } from "@mantine/core";
 import { useBlackListStore } from "@/lib/store";
 import { IconX } from "@tabler/icons-react";
+import { useState } from "react";
 
 export default function Ingredients() {
   const { classes } = useStyles();
   const { ingredients, addIngredient, removeIngredient } = useBlackListStore(
     (state) => state
   );
+  const [ingredientForm, setIngredientForm] = useState("");
   console.log(ingredients);
 
   return (
@@ -30,38 +32,47 @@ export default function Ingredients() {
         mt={50}
         breakpoints={[{ maxWidth: "md", cols: 1 }]}
       >
-        <Input.Wrapper
-          id="input-demo"
-          withAsterisk
-          description="This ingredient will be excluded from results"
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addIngredient(ingredientForm);
+          }}
         >
-          <Flex
-            justify="center"
-            gap="md"
-            align="center"
-            direction="row"
-            wrap="nowrap"
+          <Input.Wrapper
+            id="input-demo"
+            withAsterisk
+            description="This ingredient will be excluded from results"
           >
-            <Input
-              variant="filled"
-              placeholder="Ingredient"
-              sx={{
-                width: "100%",
-              }}
-            />
-
-            <Button onClick={() => addIngredient("eggs")}>Add</Button>
-          </Flex>
-        </Input.Wrapper>
-
-        <div>
-          <Button onClick={() => removeIngredient("eggs")}>Remove</Button>
-        </div>
+            <Flex
+              justify="center"
+              gap="md"
+              align="center"
+              direction="row"
+              wrap="nowrap"
+            >
+              <Input
+                variant="filled"
+                placeholder="Ingredient"
+                sx={{
+                  width: "100%",
+                }}
+                required
+                value={ingredientForm}
+                onChange={(e) => setIngredientForm(e.target.value)}
+              />
+              <Button type="submit">Add</Button>
+            </Flex>
+          </Input.Wrapper>
+        </form>
         {ingredients.length > 0 ? (
           ingredients.map((ingredient) => (
             <div className={classes.item} key={ingredient}>
               <Text>{ingredient ?? ""}</Text>
-              <ActionIcon variant="subtle" color="red">
+              <ActionIcon
+                variant="subtle"
+                color="red"
+                onClick={() => removeIngredient(ingredient)}
+              >
                 <IconX size={20} />
               </ActionIcon>
             </div>

@@ -35,7 +35,7 @@ export const useBlackListStore = create<BlackListStore>()(
       ingredients: [],
       addIngredient: (value) =>
         set(() => {
-          return { ingredients: [...get().ingredients, value] };
+          return { ingredients: [value, ...get().ingredients] };
         }),
       removeIngredient: (value) =>
         set(() => {
