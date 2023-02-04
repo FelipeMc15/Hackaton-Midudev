@@ -2,6 +2,7 @@ import cohere from "cohere-ai";
 import { useEffect, useState } from "react";
 import { COHERE_API } from "../constants";
 import { useDietStore } from "../store";
+import { useBlackListStore } from "../store/index";
 
 // const cohere = require("cohere-ai");
 export interface IDataIA {
@@ -35,6 +36,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
     state.food,
     state.setDiet,
   ]);
+  const { ingredients } = useBlackListStore((state) => state);
   useEffect(() => {
     const response = async () => {
       setLoading(true);
@@ -43,7 +45,14 @@ export default function useGenerateIA(): useGenerateIAResponse {
         const res = await cohere.generate({
           model: "command-xlarge-nightly",
           // give me recipes for a breakfast to Low-carb diet that do not include eggs, with their respective preparation and ingredients
-          prompt: `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
+          prompt:
+            ingredients.length > 0
+              ? `give me recipes for a ${food} to ${type} diet that do not include ${new Intl.ListFormat(
+                  "en"
+                ).format(
+                  ingredients
+                )}, with their respective preparation and ingredients`
+              : `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
           max_tokens: 386,
           temperature: 0.9,
           k: 0,

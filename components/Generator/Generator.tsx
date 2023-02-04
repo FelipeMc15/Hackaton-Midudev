@@ -33,7 +33,7 @@ export default function Generator() {
   };
 
   return (
-    <Container size="lg" py="xl">
+    <Container size="lg" py="xl" sx={{ minHeight: "99vh" }}>
       <Tabs defaultValue="type" value={section}>
         <SegmentedControl
           value={section}
