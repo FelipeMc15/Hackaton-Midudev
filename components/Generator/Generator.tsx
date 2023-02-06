@@ -12,8 +12,9 @@ import IAResponse from "./AIResponse";
 // change the title xd
 export default function Generator() {
   const [section, setSection] = useState<"type" | "food" | "diet">("type");
-  const [data] = useDietStore((state) => [
+  const [data, setDiet] = useDietStore((state) => [
     { type: state.type, food: state.food, diet: state.diet },
+    state.setDiet,
   ]);
 
   const handleClickNext = () => {
@@ -75,12 +76,16 @@ export default function Generator() {
             justifyContent: "flex-end",
           }}
         >
-          {section !== "diet" && (
+          {section !== "diet" ? (
             <Button
               onClick={handleClickNext}
               disabled={data[section] === null || data[section].length === 0}
             >
               Next
+            </Button>
+          ) : (
+            <Button onClick={() => setDiet("")} color="cyan">
+              Generate New Recipe
             </Button>
           )}
         </Grid.Col>
