@@ -1,7 +1,7 @@
 import { createStyles, Container, Text, Button, Group } from "@mantine/core";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import logo from "../img/logo-nutriplanes.jpeg";
+import logo from "../img/logo-nutriplanes.png";
 
 const BREAKPOINT = "@media (max-width: 755px)";
 
@@ -59,9 +59,9 @@ const useStyles = createStyles((theme) => ({
 
   img: {
     marginTop: "50px",
-    marginBottom: "0px",
-    height: "200px",
-    width: "320px",
+    marginBottom: "3px",
+    height: "105px",
+    width: "399px",
   },
 
   controls: {
