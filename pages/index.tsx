@@ -1,5 +1,7 @@
 import { createStyles, Container, Text, Button, Group } from "@mantine/core";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import logo from "../img/logo-nutriplanes.jpeg";
 
 const BREAKPOINT = "@media (max-width: 755px)";
 
@@ -46,6 +48,22 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  created: {
+    marginTop: 0,
+    fontSize: 17,
+  },
+
+  powered: {
+    fontSize: 14,
+  },
+
+  img: {
+    marginTop: "50px",
+    marginBottom: "0px",
+    height: "150px",
+    width: "250px",
+  },
+
   controls: {
     marginTop: theme.spacing.xl * 2,
 
@@ -75,22 +93,24 @@ export default function Home() {
     <div className={classes.wrapper}>
       <Container size={700} className={classes.inner}>
         <h1 className={classes.title}>
-          A{" "}
           <Text
             component="span"
             variant="gradient"
             gradient={{ from: "blue", to: "cyan" }}
             inherit
           >
-            fully featured
+            NutriPlanes
           </Text>{" "}
-          React components and hooks library
         </h1>
 
         <Text className={classes.description} color="dimmed">
-          Build fully functional accessible web applications with ease – Mantine
-          includes more than 100 customizable components and hooks to cover you
-          in any situation
+          NuntriPlans is the perfect solution for those seeking a healthy and
+          customized diet. We use artificial intelligence to create personalized
+          meal plans that fit your nutritional goals, food preferences, and
+          dietary restrictions. With NuntriPlans, you no longer have to worry
+          about meal planning, simply follow your recipes and enjoy a balanced
+          and delicious diet. Start your journey towards a healthier life with
+          NuntriPlans today!
         </Text>
 
         <Group className={classes.controls}>
@@ -106,7 +126,7 @@ export default function Home() {
 
           <Button
             component="a"
-            href="https://github.com/mantinedev/mantine"
+            href="https://github.com/FelipeMc15/Hackaton-Midudev"
             size="xl"
             variant="default"
             className={classes.control}
@@ -114,6 +134,16 @@ export default function Home() {
             GitHub
           </Button>
         </Group>
+        <Image src={logo} alt="logo" className={classes.img} />
+        <Text
+          className={classes.created}
+          gradient={{ from: "blue", to: "cyan" }}
+        >
+          Created by: Lucas-FullStackX & FelipeMc15
+        </Text>
+        <Text className={classes.powered} color="dimmed">
+          Powered by cohere
+        </Text>
       </Container>
     </div>
   );
