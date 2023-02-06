@@ -60,8 +60,8 @@ const useStyles = createStyles((theme) => ({
   img: {
     marginTop: "50px",
     marginBottom: "0px",
-    height: "150px",
-    width: "250px",
+    height: "200px",
+    width: "320px",
   },
 
   controls: {
