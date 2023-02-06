@@ -17,9 +17,11 @@ export default function HistoryList() {
             <div className={classes.item} key={historyItem.diet}>
               <Grid>
                 <Grid.Col span={6}>
+                  <Text fw={700}>Type Diet</Text>
                   <Text>{historyItem.type ?? ""}</Text>
                 </Grid.Col>
                 <Grid.Col span={6}>
+                  <Text fw={700}>Food</Text>
                   <Text>{historyItem.food ?? ""}</Text>
                 </Grid.Col>
                 <Grid.Col span={12}>

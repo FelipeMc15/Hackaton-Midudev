@@ -22,7 +22,7 @@ interface BlackListStore {
 interface HistoryStore {
   history: { type: string; food: string; diet: string }[];
   // eslint-disable-next-line no-unused-vars
-  addIngredient: (value: { type: string; food: string; diet: string }) => any;
+  addItem: (value: { type: string; food: string; diet: string }) => any;
   // eslint-disable-next-line no-unused-vars
   clear: () => void;
 }
@@ -62,7 +62,7 @@ export const useHistoryStore = create<HistoryStore>()(
   persist(
     (set, get) => ({
       history: [],
-      addIngredient: (value) =>
+      addItem: (value) =>
         set(() => {
           return { history: [value, ...get().history] };
         }),
