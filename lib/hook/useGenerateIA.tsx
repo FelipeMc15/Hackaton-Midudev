@@ -2,7 +2,7 @@ import cohere from "cohere-ai";
 import { useEffect, useState } from "react";
 import { COHERE_API } from "../constants";
 import { useDietStore } from "../store";
-import { useBlackListStore } from "../store/index";
+import { useBlackListStore, useHistoryStore } from "../store/index";
 
 // const cohere = require("cohere-ai");
 export interface IDataIA {
@@ -36,6 +36,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
     state.food,
     state.setDiet,
   ]);
+  const [addItem] = useHistoryStore((state) => [state.addItem]);
   const { ingredients } = useBlackListStore((state) => state);
   useEffect(() => {
     const response = async () => {
@@ -53,7 +54,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
                   ingredients
                 )}, with their respective preparation and ingredients`
               : `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
-          max_tokens: 386,
+          max_tokens: 500,
           temperature: 0.9,
           k: 0,
           p: 0.75,
@@ -65,7 +66,11 @@ export default function useGenerateIA(): useGenerateIAResponse {
         setData(res?.body?.generations ? res.body.generations : []);
         if (res?.body?.generations[0]?.text) {
           setDiet(res.body.generations[0].text);
-          console.log(diet);
+          addItem({
+            food,
+            type,
+            diet: res.body.generations[0].text,
+          });
         }
         setLoading(false);
       } catch (err: unknown) {
@@ -79,7 +84,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
     if (type.length > 0 && food.length > 0 && diet.length === 0) {
       response();
     }
-  }, [type, food, diet, setDiet]);
+  }, [type, food, diet, setDiet, ingredients]);
 
   return { data, loading, error };
 }

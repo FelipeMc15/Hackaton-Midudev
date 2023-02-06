@@ -18,8 +18,7 @@ export default function Ingredients() {
   const { ingredients, addIngredient, removeIngredient } = useBlackListStore(
     (state) => state
   );
-  const [ingredientForm, setIngredientForm] = useState("");
-  console.log(ingredients);
+  const [ingredientForm, setIngredientForm] = useState<string>("");
 
   return (
     <Container size="lg" py="sm" p={0}>
@@ -27,7 +26,7 @@ export default function Ingredients() {
         list of ingredients ignored
       </Title>
       <SimpleGrid
-        cols={3}
+        cols={1}
         spacing="md"
         mt={50}
         breakpoints={[{ maxWidth: "md", cols: 1 }]}

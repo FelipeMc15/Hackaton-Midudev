@@ -84,6 +84,9 @@ export default createStyles((theme) => ({
       }`,
     },
   },
+  response: {
+    minHeight: "60vh",
+  },
   cardTitle: globalStyles.cardTitle(theme),
   title: globalStyles.title(theme),
 }));

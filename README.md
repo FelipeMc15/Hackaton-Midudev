@@ -1,4 +1,4 @@
-# NuntriPlans
+# Hackaton-Midudev | NuntriPlans
 
 ![Logo de NuntriPlans](https://res.cloudinary.com/dfuhjkcka/image/upload/c_scale,w_582/v1675642252/WhatsApp_Image_2023-01-30_at_4.52.04_PM_tketzy.jpg)
 
@@ -16,7 +16,7 @@ NuntriPlans is designed to help users create personalized meal plans that fit th
 
 ## Tech Stack
 
-- Front-end: TypeScript
+- Front-end: TypeScript & Mantine
 - AI algorithms: Cohere
 - Built with: Next.js
 
@@ -33,5 +33,3 @@ $ npm install
 3. Start the development server
 
 $ npm run dev
-
-# Hackaton-Midudev

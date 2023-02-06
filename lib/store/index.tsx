@@ -19,6 +19,13 @@ interface BlackListStore {
   // eslint-disable-next-line no-unused-vars
   removeIngredient: (value: string) => void;
 }
+interface HistoryStore {
+  history: { type: string; food: string; diet: string }[];
+  // eslint-disable-next-line no-unused-vars
+  addItem: (value: { type: string; food: string; diet: string }) => any;
+  // eslint-disable-next-line no-unused-vars
+  clear: () => void;
+}
 
 export const useDietStore = create<DietState>()((set) => ({
   diet: "",
@@ -47,6 +54,25 @@ export const useBlackListStore = create<BlackListStore>()(
     }),
     {
       name: "food-storage", // name of the item in the storage (must be unique)
+      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    }
+  )
+);
+export const useHistoryStore = create<HistoryStore>()(
+  persist(
+    (set, get) => ({
+      history: [],
+      addItem: (value) =>
+        set(() => {
+          return { history: [value, ...get().history] };
+        }),
+      clear: () =>
+        set(() => ({
+          history: [],
+        })),
+    }),
+    {
+      name: "history-storage", // name of the item in the storage (must be unique)
       storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
     }
   )

@@ -1,10 +1,14 @@
 import NavBar from "@/components/NavBar/NavBar";
-import Settings from "@/components/Settings/Settings";
+import History from "@/components/History/History";
+import Head from "next/head";
 
 export default function HistoryPage() {
   return (
     <>
-      <Settings />
+      <Head>
+        <title>Nutriplanes | History</title>
+      </Head>
+      <History />
       <NavBar />
     </>
   );
