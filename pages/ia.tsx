@@ -1,4 +1,6 @@
 import Generator from "@/components/Generator/Generator";
+import NavBar from "@/components/NavBar/NavBar";
+
 import Head from "next/head";
 
 export default function IA() {
@@ -8,6 +10,7 @@ export default function IA() {
         <title>Nutriplanes | Generator</title>
       </Head>
       <Generator />
+      <NavBar />
     </>
   );
 }
