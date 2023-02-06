@@ -7,11 +7,10 @@ import {
   Container,
   Input,
   Flex,
-  ActionIcon,
 } from "@mantine/core";
 import { useBlackListStore } from "@/lib/store";
-import { IconX } from "@tabler/icons-react";
 import { useState } from "react";
+import IngredientCard from "./IngredientCard";
 
 export default function Ingredients() {
   const { classes } = useStyles();
@@ -65,16 +64,11 @@ export default function Ingredients() {
         </form>
         {ingredients.length > 0 ? (
           ingredients.map((ingredient) => (
-            <div className={classes.item} key={ingredient}>
-              <Text>{ingredient ?? ""}</Text>
-              <ActionIcon
-                variant="subtle"
-                color="red"
-                onClick={() => removeIngredient(ingredient)}
-              >
-                <IconX size={20} />
-              </ActionIcon>
-            </div>
+            <IngredientCard
+              key={ingredient}
+              ingredient={ingredient}
+              onRemove={() => removeIngredient(ingredient)}
+            />
           ))
         ) : (
           <div className={classes.item}>
