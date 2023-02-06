@@ -27,7 +27,7 @@ export default function Ingredients() {
         list of ingredients ignored
       </Title>
       <SimpleGrid
-        cols={3}
+        cols={1}
         spacing="md"
         mt={50}
         breakpoints={[{ maxWidth: "md", cols: 1 }]}

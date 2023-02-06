@@ -1,9 +1,9 @@
-import Settings from "@/components/Settings/Settings";
+import History from "@/components/History/History";
 
 export default function HistoryPage() {
   return (
     <>
-      <Settings />
+      <History />
     </>
   );
 }
