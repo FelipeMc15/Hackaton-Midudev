@@ -7,8 +7,7 @@ import Loader from "../Loader";
 export default function IAResponse() {
   const { classes } = useStyles();
   const [diet] = useDietStore((state) => [state.diet]);
-  const { data, loading } = useGenerateIA();
-  console.log(data, loading);
+  const { loading } = useGenerateIA();
   return (
     <Container size="lg" py="xl" p={0}>
       <Title order={2} className={classes.title} align="center" mt="sm">

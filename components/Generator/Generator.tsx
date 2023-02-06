@@ -40,11 +40,14 @@ export default function Generator() {
           onChange={(value: "diet" | "food" | "type") => setSection(value)}
           transitionTimingFunction="ease"
           fullWidth
-          disabled={data[section] === null || data[section].length === 0}
           data={[
             { label: "Diet", value: "type" },
-            { label: "Food", value: "food" },
-            { label: "Response", value: "diet" },
+            { label: "Food", value: "food", disabled: data.type.length === 0 },
+            {
+              label: "Response",
+              value: "diet",
+              disabled: data.type.length === 0 || data.food.length === 0,
+            },
           ]}
         />
         <Tabs.Panel value="type" pt="xs">

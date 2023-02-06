@@ -54,7 +54,7 @@ export default function useGenerateIA(): useGenerateIAResponse {
                   ingredients
                 )}, with their respective preparation and ingredients`
               : `give me recipes for a ${food} to ${type}, with their respective preparation and ingredients`,
-          max_tokens: 386,
+          max_tokens: 500,
           temperature: 0.9,
           k: 0,
           p: 0.75,
@@ -71,7 +71,6 @@ export default function useGenerateIA(): useGenerateIAResponse {
             type,
             diet: res.body.generations[0].text,
           });
-          console.log(diet);
         }
         setLoading(false);
       } catch (err: unknown) {

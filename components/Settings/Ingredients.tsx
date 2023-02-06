@@ -18,8 +18,7 @@ export default function Ingredients() {
   const { ingredients, addIngredient, removeIngredient } = useBlackListStore(
     (state) => state
   );
-  const [ingredientForm, setIngredientForm] = useState("");
-  console.log(ingredients);
+  const [ingredientForm, setIngredientForm] = useState<string>("");
 
   return (
     <Container size="lg" py="sm" p={0}>
