@@ -1,10 +1,10 @@
-# Hackaton-Midudev | NuntriPlans
+# Hackaton-Midudev | NutriPlanes
 
-![Logo de NuntriPlans](https://res.cloudinary.com/dfuhjkcka/image/upload/c_scale,w_582/v1675642252/WhatsApp_Image_2023-01-30_at_4.52.04_PM_tketzy.jpg)
+![Logo de NutriPlanes](https://res.cloudinary.com/dfuhjkcka/image/upload/c_scale,w_582/v1675642252/WhatsApp_Image_2023-01-30_at_4.52.04_PM_tketzy.jpg)
 
 ## Overview
 
-NuntriPlans is designed to help users create personalized meal plans that fit their specific dietary needs and preferences. Using advanced AI algorithms from Cohere, NuntriPlans generates healthy and delicious recipes tailored to each user's unique nutritional goals, food likes and dislikes, and dietary restrictions.
+NutriPlanes is designed to help users create personalized meal plans that fit their specific dietary needs and preferences. Using advanced AI algorithms from Cohere, NuntriPlans generates healthy and delicious recipes tailored to each user's unique nutritional goals, food likes and dislikes, and dietary restrictions.
 
 ## Features
 
