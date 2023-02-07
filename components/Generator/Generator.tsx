@@ -1,21 +1,19 @@
 // import useStyles from "@/components/Generator/Generator.styles";
 import { useState } from "react";
 import { Container, SegmentedControl, Tabs, Button, Grid } from "@mantine/core";
-import { useDietStore } from "@/lib/store";
+import { useDietStore, useBlackListStore } from "@/lib/store";
 import TypeDiets from "./TypesDiets";
 import FoodsList from "./FoodsList";
 import IAResponse from "./AIResponse";
+import IgnoredIngredients from "./IgnoredIngredients";
 
-// TO DO:
-// add Hover effect in the cards
-// update diets description
-// change the title xd
 export default function Generator() {
   const [section, setSection] = useState<"type" | "food" | "diet">("type");
   const [data, setDiet] = useDietStore((state) => [
     { type: state.type, food: state.food, diet: state.diet },
     state.setDiet,
   ]);
+  const [ingredients] = useBlackListStore((state) => [state.ingredients]);
 
   const handleClickNext = () => {
     if (section === "type") {
@@ -89,6 +87,11 @@ export default function Generator() {
             </Button>
           )}
         </Grid.Col>
+        {ingredients.length > 0 && section === "diet" && (
+          <Grid.Col>
+            <IgnoredIngredients />
+          </Grid.Col>
+        )}
       </Grid>
     </Container>
   );
