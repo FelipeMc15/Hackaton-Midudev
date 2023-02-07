@@ -111,7 +111,7 @@ export default function Home() {
             src="/logo-nutriplanes.png"
             quality={100}
             alt="logo"
-            width={500}
+            width={570}
             height={150}
           />
 
